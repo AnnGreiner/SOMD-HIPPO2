@@ -15,14 +15,14 @@ public class DataReceiver {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        while(true) {
+        //while(true) {
             try {
                 String str = pipe.readLine();
                 
                 //System.out.println("Read: " + str);
                 if (str == null)
                 {
-                    continue;
+                    //continue;
                 }
                 String[] strarray = str.split(" ");
                 data = new short[strarray.length];
@@ -51,7 +51,7 @@ public class DataReceiver {
             }
            
          }
-    }
+   // }
     
     protected short getData(int i) {
     	return this.data[i];
