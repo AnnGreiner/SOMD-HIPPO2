@@ -33,12 +33,13 @@ public class Initialization {
 				String input = br.readLine();
 
 				if ("L".equals(input) || "l".equals(input)) {
-					Login();
+					user = Login();
 					break;
 				}
 				if ("R".equals(input) || "r".equals(input)) {
 					user = Register();
 					userList.add(user);
+					saveUserList(userList);
 					break;
 				}
 			}
@@ -182,5 +183,23 @@ public class Initialization {
 			}
 		}
 		return null;
+	}
+
+	private void saveUserList(List<User> userList) {
+		String str = ".userList";
+
+		try {
+			FileOutputStream fos = new FileOutputStream(str);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(userList);
+			oos.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
 	}
 }
