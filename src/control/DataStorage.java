@@ -18,13 +18,13 @@ public class DataStorage {
 
 	DataReceiver datareceiver = new DataReceiver();
 
-	protected void storeData() {
+	protected void storeData(User user) {
 		short pulse = datareceiver.getData(4);
 		short spO2 = datareceiver.getData(5);
 		LocalDate localDate = LocalDate.now();
 		LocalDateTime localDateTime = LocalDateTime.now();
 
-		String str = "log.txt";
+		String str = "log_" + user.getName() + ".txt";
 		Path path = Paths.get(str);
 
 		if (!Files.exists(path) && Files.isDirectory(path)) {

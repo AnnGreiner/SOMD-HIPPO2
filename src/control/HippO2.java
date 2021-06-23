@@ -5,7 +5,7 @@ public class HippO2 {
 	public static void main(String[] args) {
 		
 		Initialization init = new Initialization();
-		init.Initialize();
+		User user = init.Initialize();
 		
 
 		DataStorage dataStorage = new DataStorage();
@@ -14,7 +14,7 @@ public class HippO2 {
 		while (true) {
 
 			dataStorage.datareceiver.getDataFromPipe();
-			dataStorage.storeData();
+			dataStorage.storeData(user);
 
 		}
 	}

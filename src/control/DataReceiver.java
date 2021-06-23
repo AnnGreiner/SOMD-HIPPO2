@@ -10,12 +10,20 @@ public class DataReceiver {
 	RandomAccessFile pipe = null;
 
 	public void setDataPipe() {
-		System.out.println("Trying to connect to sensor provider...");
-		try {
-			pipe = new RandomAccessFile("\\\\.\\pipe\\ble_host_pipe", "r");
-			System.out.println("Connected to sensor provider");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		while (true) {
+			System.out.println("Trying to connect to sensor provider...");
+			try {
+				pipe = new RandomAccessFile("\\\\.\\pipe\\ble_host_pipe", "r");
+				System.out.println("Connected to sensor provider");
+				break;
+			} catch (FileNotFoundException e) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		}
 	}
 

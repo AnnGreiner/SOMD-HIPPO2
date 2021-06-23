@@ -1,8 +1,9 @@
 package control;
 
-public class User {
+public class User implements java.io.Serializable {
 
 	private String name;
+	private String passwordHash;
 	private int age;
 	private boolean male;
 	// private boolean female;
@@ -12,9 +13,17 @@ public class User {
 	protected void setName(String s) {
 		this.name = s;
 	}
-
+	
 	protected String getName() {
 		return this.name;
+	}
+
+	protected void setpasswordHash(String pH) {
+		this.passwordHash = pH;
+	}
+	
+	protected String getPasswordHash() {
+		return this.passwordHash;
 	}
 
 	protected void setAge(int a) {
