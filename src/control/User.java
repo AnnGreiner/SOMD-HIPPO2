@@ -1,6 +1,14 @@
 package control;
 
-public class User implements java.io.Serializable {
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import java.io.Serializable;
+
+public class User implements Serializable {
 
 	private String name;
 	private String passwordHash;
@@ -12,11 +20,12 @@ public class User implements java.io.Serializable {
 	private short maxPulse;
 	private short trainPulse;
 	private short critPulseHigh;
-	
+
+
 	protected void setName(String s) {
 		this.name = s;
 	}
-	
+
 	protected String getName() {
 		return this.name;
 	}
@@ -24,7 +33,7 @@ public class User implements java.io.Serializable {
 	protected void setpasswordHash(String pH) {
 		this.passwordHash = pH;
 	}
-	
+
 	protected String getPasswordHash() {
 		return this.passwordHash;
 	}
@@ -52,25 +61,25 @@ public class User implements java.io.Serializable {
 	public boolean checkMale() {
 		return this.male;
 	}
-	
+
 	protected void setRestPulse(short rP) {
 		this.restPulse = rP;
 		return;
 	}
-	
+
 	public short getRestPulse() {
 		return this.restPulse;
 	}
-	
+
 	public short getMaxPulse() {
 		return this.maxPulse;
 	}
-	
+
 	public void setMaxPulse(short mP) {
 		this.maxPulse = mP;
 		return;
 	}
-	
+
 	public void setTrainPulse(short tP) {
 		this.trainPulse = tP;
 		return;
@@ -79,12 +88,12 @@ public class User implements java.io.Serializable {
 	public short getTrainPulse() {
 		return this.trainPulse;
 	}
-	
+
 	public void setCritPulseHigh(short critP) {
 		this.critPulseHigh = critP;
 		return;
 	}
-	
+
 	public short getCritPulseHigh() {
 		return this.critPulseHigh;
 	}
@@ -93,5 +102,4 @@ public class User implements java.io.Serializable {
 
 	// protected boolean checkFemale() {
 	// return this.female;}
-
 }
