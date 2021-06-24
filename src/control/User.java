@@ -8,8 +8,11 @@ public class User implements java.io.Serializable {
 	private boolean male;
 	// private boolean female;
 	private double weight;
+	private short restPulse;
+	private short maxPulse;
+	private short trainPulse;
+	private short critPulseHigh;
 	
-
 	protected void setName(String s) {
 		this.name = s;
 	}
@@ -30,7 +33,7 @@ public class User implements java.io.Serializable {
 		this.age = a;
 	}
 
-	protected int getAge() {
+	public int getAge() {
 		return this.age;
 	}
 
@@ -38,7 +41,7 @@ public class User implements java.io.Serializable {
 		this.weight = w;
 	}
 
-	protected double getWeight() {
+	public double getWeight() {
 		return this.weight;
 	}
 
@@ -46,10 +49,45 @@ public class User implements java.io.Serializable {
 		this.male = male;
 	}
 
-	protected boolean checkMale() {
+	public boolean checkMale() {
 		return this.male;
 	}
+	
+	protected void setRestPulse(short rP) {
+		this.restPulse = rP;
+		return;
+	}
+	
+	public short getRestPulse() {
+		return this.restPulse;
+	}
+	
+	public short getMaxPulse() {
+		return this.maxPulse;
+	}
+	
+	public void setMaxPulse(short mP) {
+		this.maxPulse = mP;
+		return;
+	}
+	
+	public void setTrainPulse(short tP) {
+		this.trainPulse = tP;
+		return;
+	}
 
+	public short getTrainPulse() {
+		return this.trainPulse;
+	}
+	
+	public void setCritPulseHigh(short critP) {
+		this.critPulseHigh = critP;
+		return;
+	}
+	
+	public short getCritPulseHigh() {
+		return this.critPulseHigh;
+	}
 	// protected void isFemale(boolean f) {
 	// this.female = f;}
 

@@ -13,17 +13,4 @@ public class Alarm {
 	public void critPulseAlarmHigh() {
 		System.out.println("Kritischer Wert: Pulse zu hoch!");
 	}
-	
-	public void warnPulseAlarmHigh() {
-		System.out.println("Warnung: Pulse hoch!");
-		
-	}
-	
-	public void critPulseAlarmLow() {
-		System.out.println("Kritischer Wert: Pulse zu niedrig!");
-	}
-	
-	public void warnPulseAlarmLow() {
-		System.out.println("Warnung: Pulse niedrig!");
-	}
 }

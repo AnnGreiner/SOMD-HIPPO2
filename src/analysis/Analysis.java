@@ -1,16 +1,17 @@
 package analysis;
 
 
+import control.User;
 import visualisation.Alarm;
 
 public class Analysis {
 	Alarm alarm = new Alarm();
 	PatientAnalysis patientAnalyse = new PatientAnalysis();
 
-	public void analyseData(short pulse, short spo2, PatientAnalysis patientAnalysis) {
+	public void analyseData(short pulse, short spo2, User user) {
 		checkSaturation(spo2);
-		checkPulse(pulse, patientAnalysis);
-
+		checkPulse(pulse, user);
+		return;
 	}
 
 	protected void checkSaturation(short spo2) {
@@ -26,28 +27,14 @@ public class Analysis {
 			alarm.warnSpo2Alarm();
 			return;
 		}
+		return;
 	}
 	
-	protected void checkPulse(short pulse, PatientAnalysis patientAnalysis ) {
-		if (pulse > patientAnalysis.critPulseHigh) {
+	protected void checkPulse(short pulse, User user) {
+		if (pulse > user.getCritPulseHigh()) {
 			alarm.critPulseAlarmHigh();
 			return;
 		}
-
-		if (pulse > patientAnalysis.warnPulseHigh) {
-			alarm.warnPulseAlarmHigh();
-			return;
-		}
-		
-		if (pulse < patientAnalysis.critPulseHigh) {
-			alarm.critPulseAlarmLow();
-			return;
-		}
-
-		if (pulse < patientAnalysis.warnPulseLow) {
-			alarm.warnPulseAlarmLow();
-			return;
-		}
-		
+		return;
 	}
 }

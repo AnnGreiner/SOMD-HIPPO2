@@ -19,7 +19,7 @@ public class HippO2 {
 			dataStorage.datareceiver.getDataFromPipe();
 			dataStorage.storeData(user);
 			
-			analysis.analyseData(dataStorage.datareceiver.getData(4), dataStorage.datareceiver.getData(5));
+			analysis.analyseData(dataStorage.datareceiver.getData(4), dataStorage.datareceiver.getData(5), user);
 
 		}
 	}

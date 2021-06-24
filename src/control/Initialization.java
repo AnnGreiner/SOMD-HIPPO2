@@ -18,6 +18,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import analysis.PatientAnalysis;
+
 public class Initialization {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -90,20 +92,26 @@ public class Initialization {
 			int age = Integer.parseInt(br.readLine());
 			user.setAge(age);
 
-			System.out.println("Weight: ");
-			int weight = Integer.parseInt(br.readLine());
-			user.setWeight(weight);
-
 			System.out.println("Male (M) or Female (F):");
 			String input = br.readLine();
-
 			if ("M".equals(input) || "m".equals(input)) {
 				user.isMale(true);
 			}
 			if ("F".equals(input) || "f".equals(input)) {
 				user.isMale(false);
 			}
+			
+			System.out.println("Weight: ");
+			int weight = Integer.parseInt(br.readLine());
+			user.setWeight(weight);
 
+			System.out.println("Resting Pulse: ");
+			short rP = Short.parseShort(br.readLine());
+			user.setRestPulse(rP);
+			
+			PatientAnalysis analy = new PatientAnalysis();
+			user = analy.analysePatient(user);
+			
 			return user;
 
 		} catch (IOException e) {
@@ -199,7 +207,7 @@ public class Initialization {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		}
 
 	}
 }
