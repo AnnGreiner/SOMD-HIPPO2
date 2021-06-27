@@ -17,7 +17,7 @@ public class Analysis {
 
 	protected void checkSaturation(short spo2) {
 		short limitSpo2Crit = 90;
-		short limitSpo2War = 95;
+		short limitSpo2War = 97;
 
 		if (spo2 < limitSpo2Crit) {
 			

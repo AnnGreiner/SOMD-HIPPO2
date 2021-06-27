@@ -3,13 +3,13 @@ package control;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import analysis.Analysis;
 import visualisation.Alarm;
 
-public class HippO2Management {
+public class HippO2Management extends Thread {
 
-	Thread t1 = new Thread();
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	Analysis analysis = new Analysis();
 	Alarm alarm = analysis.getAlarm();
@@ -17,21 +17,24 @@ public class HippO2Management {
 	public void checkInput() {
 
 		try {
-			String input = br.readLine();
+			while (true) {
 
-			if ("O".equals(input) || "o".equals(input)) {
+				String input = br.readLine();
 
-				alarm.snoozeSpO2Alarm();
-			}
+				if ("O".equals(input) || "o".equals(input)) {
 
-			if ("P".equals(input) || "p".equals(input)) {
+					alarm.snoozeSpO2Alarm();
+				}
 
-				alarm.snoozePulseAlarm();
-			}
+				if ("P".equals(input) || "p".equals(input)) {
 
-			if ("R".equals(input) || "r".equals(input)) {
+					alarm.snoozePulseAlarm();
+				}
 
-				alarm.resetAlarm();
+				if ("R".equals(input) || "r".equals(input)) {
+
+					alarm.resetAlarm();
+				}
 			}
 
 		} catch (IOException e) {
