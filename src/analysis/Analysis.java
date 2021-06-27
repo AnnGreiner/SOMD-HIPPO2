@@ -3,7 +3,7 @@ package analysis;
 
 import control.User;
 import visualisation.Alarm;
-import visualisation.AlarmManagement;
+
 
 public class Analysis {
 	Alarm alarm = new Alarm();

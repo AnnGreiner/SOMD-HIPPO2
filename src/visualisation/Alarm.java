@@ -1,5 +1,7 @@
 package visualisation;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Timer;
 
 public class Alarm {
@@ -7,6 +9,8 @@ public class Alarm {
 	boolean pauseSpO2Alarm = false;
 	boolean pausePulseAlarm = false;
 	boolean pauseSpO2Warning = false;
+	LocalDate localDateAlarm = LocalDate.now();
+	LocalDateTime localDateTimeAlarm = LocalDateTime.now();
 
 
 	Timer timer = new Timer();
