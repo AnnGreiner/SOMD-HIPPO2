@@ -3,6 +3,7 @@ package analysis;
 
 import control.User;
 import visualisation.Alarm;
+import visualisation.AlarmManagement;
 
 public class Analysis {
 	Alarm alarm = new Alarm();
@@ -19,11 +20,13 @@ public class Analysis {
 		short limitSpo2War = 95;
 
 		if (spo2 < limitSpo2Crit) {
+			
 			alarm.critSpo2Alarm();
 			return;
 		}
 
 		if (spo2 < limitSpo2War) {
+			
 			alarm.warnSpo2Alarm();
 			return;
 		}
@@ -32,9 +35,18 @@ public class Analysis {
 	
 	protected void checkPulse(short pulse, User user) {
 		if (pulse > user.getCritPulseHigh()) {
+			
 			alarm.critPulseAlarmHigh();
 			return;
 		}
 		return;
+	}
+	
+	public Alarm getAlarm() {
+		return this.alarm;
+	}
+	
+	protected void setAlarm(Alarm alarm) {
+		this.alarm = alarm;
 	}
 }

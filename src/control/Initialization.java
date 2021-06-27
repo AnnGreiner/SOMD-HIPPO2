@@ -19,11 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import analysis.PatientAnalysis;
+import visualisation.Alarm;
 
 public class Initialization {
 
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	List<User> userList = new ArrayList<>();
+	
 
 	protected User Initialize() {
 		userList = getUserList();
