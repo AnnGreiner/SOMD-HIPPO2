@@ -11,6 +11,8 @@ public class Alarm {
 	boolean pauseSpO2Warning = false;
 	LocalDate localDateAlarm = LocalDate.now();
 	LocalDateTime localDateTimeAlarm = LocalDateTime.now();
+	boolean alarmPulse = false;
+	boolean alarmSpo2 = false;
 
 
 	Timer timer = new Timer();
@@ -70,5 +72,32 @@ public class Alarm {
 		if (!pausePulseAlarm) {
 			System.out.println("Kritischer Wert: Pulse zu hoch!");
 		}
+	}
+	
+	public LocalDate getAlarmDate() {
+		return this.localDateAlarm;
+	}
+	
+	public LocalDateTime getAlarmTime() {
+		return this.localDateTimeAlarm;
+	}
+	
+	public void setPulseAlarm(boolean value) {
+		this.alarmPulse = value;
+		return;
+	}
+	
+	public boolean getPulseAlarm() {
+		return this.alarmPulse;
+		
+	}
+	
+	public void setSpo2Alarm(boolean value) {
+		this.alarmSpo2 = value;
+		return;
+	}
+	public boolean getSpo2Alarm() {
+		return this.alarmSpo2;
+		
 	}
 }

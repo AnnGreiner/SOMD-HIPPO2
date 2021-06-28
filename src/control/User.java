@@ -26,7 +26,7 @@ public class User implements Serializable {
 		this.name = s;
 	}
 
-	protected String getName() {
+	public String getName() {
 		return this.name;
 	}
 
