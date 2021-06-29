@@ -32,7 +32,7 @@ public class PatientAnalysis {
 		short tP = (short) ((mP - user.getRestPulse()) * 0.8 + user.getRestPulse());
 		user.setTrainPulse(tP);
 		//user.setCritPulseHigh((short) ((short) mP * 0.9)); //not possible due to emulator
-		user.setCritPulseHigh((short) 140);
+		user.setCritPulseHigh((short) 60);
 		return user;
 	}
 }
