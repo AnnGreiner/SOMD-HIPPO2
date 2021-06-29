@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import control.User;
 import visualisation.Alarm;
@@ -14,7 +16,7 @@ import visualisation.Alarm;
 public class Analysis {
 
 	PatientAnalysis patientAnalyse = new PatientAnalysis();
-	Alarm alarm;
+	Alarm alarm =new Alarm();
 
 	public void analyseData(short pulse, short spo2, User user) {
 		checkSaturation(pulse, spo2, user);
@@ -24,23 +26,33 @@ public class Analysis {
 
 	protected void checkSaturation(short pulse, short spo2, User user) {
 		short limitSpo2Crit = 90;
-		short limitSpo2War = 97;
+		short limitSpo2War = 95;
 
 		if (spo2 < limitSpo2Crit) {
-			alarm = new Alarm();
-			alarm.critSpo2Alarm();
-			alarm.setSpo2Alarm(true);
-			saveAlarm(user, alarm, pulse, spo2);
-			alarm.setSpo2Alarm(false);
+			if (!alarm.getPauseSpo2Crit()) {
+		
+				alarm.critSpo2Alarm();
+				alarm.setAlarmDate(LocalDate.now());
+				alarm.setAlarmDateTime(LocalDateTime.now());
+				alarm.setSpo2Alarm(true);
+				saveAlarm(user, alarm, pulse, spo2);
+				alarm.setSpo2Alarm(false);
+				return;
+			}
 			return;
 		}
 
 		if (spo2 < limitSpo2War) {
-			alarm = new Alarm();
-			alarm.warnSpo2Alarm();
-			alarm.setSpo2Alarm(true);
-			saveAlarm(user, alarm, pulse, spo2);
-			alarm.setSpo2Alarm(false);
+			if (!alarm.getPauseSpo2Warn()) {
+				
+				alarm.warnSpo2Alarm();
+				alarm.setAlarmDate(LocalDate.now());
+				alarm.setAlarmDateTime(LocalDateTime.now());
+				alarm.setSpo2Alarm(true);
+				saveAlarm(user, alarm, pulse, spo2);
+				alarm.setSpo2Alarm(false);
+				return;
+			}
 			return;
 		}
 		return;
@@ -48,11 +60,16 @@ public class Analysis {
 
 	protected void checkPulse(short pulse, short spo2, User user) {
 		if (pulse > user.getCritPulseHigh()) {
-			alarm = new Alarm();
-			alarm.critPulseAlarmHigh();
-			alarm.setPulseAlarm(true);
-			saveAlarm(user, alarm, pulse, spo2);
-			alarm.setPulseAlarm(false);
+			if (!alarm.getPausePulse()) {
+				
+				alarm.critPulseAlarmHigh();
+				alarm.setAlarmDate(LocalDate.now());
+				alarm.setAlarmDateTime(LocalDateTime.now());
+				alarm.setPulseAlarm(true);
+				saveAlarm(user, alarm, pulse, spo2);
+				alarm.setPulseAlarm(false);
+				return;
+			}
 			return;
 		}
 		return;
@@ -76,8 +93,8 @@ public class Analysis {
 
 		try (FileWriter fw = new FileWriter(str, true); BufferedWriter outputLog = new BufferedWriter(fw)) {
 			if (alarm.getPulseAlarm()) {
-				outputLog.write("\n" + "Alarm: Pulse high!" + " Pulse = " + pulse + ", Saturation = " + spo2 + ", Date: "
-						+ alarm.getAlarmDate() + ", Time: " + alarm.getAlarmTime());
+				outputLog.write("\n" + "Alarm: Pulse high!" + " Pulse = " + pulse + ", Saturation = " + spo2
+						+ ", Date: " + alarm.getAlarmDate() + ", Time: " + alarm.getAlarmTime());
 				outputLog.close();
 			} else if (alarm.getSpo2Alarm()) {
 				outputLog.write("\n" + "Alarm: Saturation low! " + " Pulse = " + pulse + ", Saturation = " + spo2

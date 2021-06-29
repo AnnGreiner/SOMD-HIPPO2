@@ -83,8 +83,16 @@ public class Alarm {
 		return this.localDateAlarm;
 	}
 	
+	public void setAlarmDate(LocalDate localDate) {
+		this.localDateAlarm = localDate;
+	}
+	
 	public LocalDateTime getAlarmTime() {
 		return this.localDateTimeAlarm;
+	}
+	
+	public void setAlarmDateTime(LocalDateTime localDateTime) {
+		this.localDateTimeAlarm = localDateTime;
 	}
 	
 	public void setPulseAlarm(boolean value) {
@@ -103,6 +111,21 @@ public class Alarm {
 	}
 	public boolean getSpo2Alarm() {
 		return this.alarmSpo2;
+		
+	}
+	
+	public boolean getPauseSpo2Warn() {
+		return this.pauseSpO2Warning;
+		
+	}
+	
+	public boolean getPauseSpo2Crit() {
+		return this.pauseSpO2Alarm;
+		
+	}
+	
+	public boolean getPausePulse() {
+		return this.pausePulseAlarm;
 		
 	}
 }

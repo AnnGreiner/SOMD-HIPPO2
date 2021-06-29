@@ -6,15 +6,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-=======
+
 import java.util.Scanner;
->>>>>>> c6b6f916a8f28f7139be4fd9e0dca88f3527c68d
 
 import analysis.Analysis;
 import visualisation.Alarm;
