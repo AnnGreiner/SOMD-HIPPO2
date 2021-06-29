@@ -26,7 +26,7 @@ public class HippO2 {
 			hippMan.analysis.analyseData(dataStorage.datareceiver.getData(4), dataStorage.datareceiver.getData(5),
 					user);
 
-			Thread.sleep(2000);	
+			Thread.sleep(1000);	
 			
 
 		}
